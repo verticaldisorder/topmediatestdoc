@@ -16,7 +16,7 @@
     data_file = pd.read_excel('./data.xlsx', engine='openpyxl', index_col='client_id')
     data_file.head()
 
-![Вывод начала таблицы](/images/pic1.png)
+[вывод начала таблицы](https://drive.google.com/file/d/1NIUaJpepYDAsW53zzWnCXbnSB-aJK4iJ/view?usp=sharing).
 
     data_file = data_file.replace('-', )
 
@@ -33,7 +33,7 @@
 
 #### Результат
 
-![Результат вычислений](/images/pic2.png)
+[Результат вычислений](https://drive.google.com/file/d/1NIUaJpepYDAsW53zzWnCXbnSB-aJK4iJ/view?usp=sharing)
 
 ## Как изменялась выручка компании за рассматриваемый период? Проиллюстрируйте графиком
 
@@ -51,7 +51,7 @@
     plt.show();
 
 #### Результат
-![График](/images/pic3.png)
+[График](https://drive.google.com/file/d/1A-6ic-oJAnBJ6YLn8A73LEDzfIzFDxPc/view?usp=sharing)
 
 ## Кто из менеджеров привлек для компании больше всего денежных средств в сентябре 2021?
 
@@ -61,7 +61,7 @@
     best_sellers.sort_values(ascending=False)[:1]
 
 #### Результат
-![Вывод лучшего менеджера](/images/pic4.png)
+[Вывод лучшего менеджера](https://drive.google.com/file/d/1uMbZ3ADrLW38dE8RixwI_6AwK9t3VfKP/view?usp=sharing)
 
 #### Вывод
 
@@ -79,7 +79,7 @@
 
 #### Результат
 
-![Результат по сделкам](/images/pic5.png)
+[Результат по сделкам](https://drive.google.com/file/d/1uMbZ3ADrLW38dE8RixwI_6AwK9t3VfKP/view?usp=sharing)
 #### Вывод
 
 Вывод: в октябре преобладающими были текущие сделки (105), а не новые (17)
@@ -97,7 +97,7 @@
 
 #### Результат
 
-![Результат по оригиналам договоров](/images/pic6.png)
+[Результат по оригиналам договоров](https://drive.google.com/file/d/1IBt4EMgj8R4eMr5iRIYb2H2xb0ApP6tx/view?usp=sharing)
 
 # Задание
 
@@ -109,7 +109,7 @@
     sellers_data.insert(1, 'bonus', 0)
     sellers_data
 
-![Датафрейм с менеджерами](/images/pic7.png)
+[Датафрейм с менеджерами](https://drive.google.com/file/d/1iAaFyl3X2YWu67beSi-YmqiMwaKmtS1C/view?usp=sharing)
 
 #### Вычисление
 
@@ -136,7 +136,7 @@
     result = res.groupby('sale')['bonus'].sum().to_frame()
 
 #### Результат
-![Результат](/images/pic8.png)
+[Результат](https://drive.google.com/file/d/1pV1o609fnofjjrwvQMJaiCwssvVUIDje/view?usp=sharing)
 
 
 
