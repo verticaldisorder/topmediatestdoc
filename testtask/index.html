@@ -134,7 +134,7 @@ from datetime import datetime
 data_file = pd.read_excel('./data.xlsx', engine='openpyxl', index_col='client_id')
 data_file.head()
 </code></pre>
-<p><img alt="Вывод начала таблицы" src="/images/pic1.png" /></p>
+<p><a href="https://drive.google.com/file/d/1NIUaJpepYDAsW53zzWnCXbnSB-aJK4iJ/view?usp=sharing">вывод начала таблицы</a>.</p>
 <pre><code>data_file = data_file.replace('-', )
 </code></pre>
 <h4 id="_3">Вычисление общей выручки</h4>
@@ -148,7 +148,7 @@ july_sum = data_file_sum_in_july['sum'].sum()
 print("Общая выручка за июль 2021 года по непросроченным сделкам:", july_sum.round(2))
 </code></pre>
 <h4 id="_4">Результат</h4>
-<p><img alt="Результат вычислений" src="/images/pic2.png" /></p>
+<p><a href="https://drive.google.com/file/d/1NIUaJpepYDAsW53zzWnCXbnSB-aJK4iJ/view?usp=sharing">Результат вычислений</a></p>
 <h2 id="_5">Как изменялась выручка компании за рассматриваемый период? Проиллюстрируйте графиком</h2>
 <h4 id="_6">Подготовка данных</h4>
 <pre><code>group_sum_data = data_file.groupby(['receiving_date'])['sum'].agg('sum')
@@ -162,14 +162,14 @@ plt.plot(group_sum_data)
 plt.show();
 </code></pre>
 <h4 id="_8">Результат</h4>
-<p><img alt="График" src="/images/pic3.png" /></p>
+<p><a href="https://drive.google.com/file/d/1A-6ic-oJAnBJ6YLn8A73LEDzfIzFDxPc/view?usp=sharing">График</a></p>
 <h2 id="2021_1">Кто из менеджеров привлек для компании больше всего денежных средств в сентябре 2021?</h2>
 <h4 id="_9">Вычисление</h4>
 <pre><code>best_sellers = data_file.groupby(['sale'])['sum'].sum()
 best_sellers.sort_values(ascending=False)[:1]
 </code></pre>
 <h4 id="_10">Результат</h4>
-<p><img alt="Вывод лучшего менеджера" src="/images/pic4.png" /></p>
+<p><a href="https://drive.google.com/file/d/1uMbZ3ADrLW38dE8RixwI_6AwK9t3VfKP/view?usp=sharing">Вывод лучшего менеджера</a></p>
 <h4 id="_11">Вывод</h4>
 <p>Вывод: менеджер, привлекший больше всего денежных средств за указанный период: Петрова</p>
 <h2 id="2021_2">Какой тип сделок (новая/текущая) был преобладающим в октябре 2021?</h2>
@@ -181,7 +181,7 @@ data_file_sum_in_october = data_file_sum_in_october[data_file_sum_in_october['re
 data_file_sum_in_october.groupby('new/current')['sum'].count()
 </code></pre>
 <h4 id="_13">Результат</h4>
-<p><img alt="Результат по сделкам" src="/images/pic5.png" /></p>
+<p><a href="https://drive.google.com/file/d/1uMbZ3ADrLW38dE8RixwI_6AwK9t3VfKP/view?usp=sharing">Результат по сделкам</a></p>
 <h4 id="_14">Вывод</h4>
 <p>Вывод: в октябре преобладающими были текущие сделки (105), а не новые (17)</p>
 <h2 id="2021_3">Сколько оригиналов договора по майским сделкам было получено в июне 2021?</h2>
@@ -194,7 +194,7 @@ data_file_sum_in_may = data_file_sum_in_may[data_file_sum_in_may['document'] == 
 print("Количество оригиналов договоров по сделкам в мае:", len(data_file_sum_in_may))
 </code></pre>
 <h4 id="_16">Результат</h4>
-<p><img alt="Результат по оригиналам договоров" src="/images/pic6.png" /></p>
+<p><a href="https://drive.google.com/file/d/1IBt4EMgj8R4eMr5iRIYb2H2xb0ApP6tx/view?usp=sharing">Результат по оригиналам договоров</a></p>
 <h1 id="_17">Задание</h1>
 <h4 id="_18">Подготовка датафрейма со всеми менеджерами</h4>
 <pre><code>sellers = data_file['sale'].unique()
@@ -203,7 +203,7 @@ sellers_data = sellers_data.dropna()
 sellers_data.insert(1, 'bonus', 0)
 sellers_data
 </code></pre>
-<p><img alt="Датафрейм с менеджерами" src="/images/pic7.png" /></p>
+<p><a href="https://drive.google.com/file/d/1iAaFyl3X2YWu67beSi-YmqiMwaKmtS1C/view?usp=sharing">Датафрейм с менеджерами</a></p>
 <h4 id="_19">Вычисление</h4>
 <pre><code>sellers_new = data_file[data_file['new/current'] == 'новая']
 sellers_new.insert(7, 'bonus', 0)
@@ -228,7 +228,7 @@ res = res.append(sellers_new_bonuses)
 result = res.groupby('sale')['bonus'].sum().to_frame()
 </code></pre>
 <h4 id="_20">Результат</h4>
-<p><img alt="Результат" src="/images/pic8.png" /></p></div>
+<p><a href="https://drive.google.com/file/d/1pV1o609fnofjjrwvQMJaiCwssvVUIDje/view?usp=sharing">Результат</a></p></div>
             </div>
         </div>
 
