@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/testtask/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Техническое задание - Topface Media test task</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Topface Media test task</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../questions/" class="nav-link">Ответы на вопросы</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../logic/" class="nav-link">Задачи на логику</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Техническое задание</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../logic/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#3" class="nav-link">Решение технического задания из пункта 3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Ответы на вопросы</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#2021" class="nav-link">Вычислите общую выручку за июль 2021 по тем сделкам, приход денежных средств которых не просрочен.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">Как изменялась выручка компании за рассматриваемый период? Проиллюстрируйте графиком</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2021_1" class="nav-link">Кто из менеджеров привлек для компании больше всего денежных средств в сентябре 2021?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2021_2" class="nav-link">Какой тип сделок (новая/текущая) был преобладающим в октябре 2021?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2021_3" class="nav-link">Сколько оригиналов договора по майским сделкам было получено в июне 2021?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#_17" class="nav-link">Задание</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="3">Решение технического задания из пункта 3</h1>
+<h1 id="_1">Ответы на вопросы</h1>
+<h2 id="2021">Вычислите общую выручку за июль 2021 по тем сделкам, приход денежных средств которых не просрочен.</h2>
+<h4 id="_2">Подготовка данных к анализу</h4>
+<pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+from datetime import datetime
+
+data_file = pd.read_excel('./data.xlsx', engine='openpyxl', index_col='client_id')
+data_file.head()
+</code></pre>
+<p><img alt="Вывод начала таблицы" src="/images/pic1.png" /></p>
+<pre><code>data_file = data_file.replace('-', )
+</code></pre>
+<h4 id="_3">Вычисление общей выручки</h4>
+<pre><code>start_july = datetime(2021, 7, 1)
+end_july = datetime(2021, 7, 31)
+pd.to_datetime(data_file['receiving_date'], format='%b %d, %Y')
+data_file_sum_in_july = data_file[data_file['receiving_date'] &gt;= start_july]
+data_file_sum_in_july = data_file_sum_in_july[data_file_sum_in_july['receiving_date'] &lt;= end_july]
+data_file_sum_in_july = data_file_sum_in_july[data_file_sum_in_july['status'] != 'ПРОСРОЧЕНО']
+july_sum = data_file_sum_in_july['sum'].sum()
+print("Общая выручка за июль 2021 года по непросроченным сделкам:", july_sum.round(2))
+</code></pre>
+<h4 id="_4">Результат</h4>
+<p><img alt="Результат вычислений" src="/images/pic2.png" /></p>
+<h2 id="_5">Как изменялась выручка компании за рассматриваемый период? Проиллюстрируйте графиком</h2>
+<h4 id="_6">Подготовка данных</h4>
+<pre><code>group_sum_data = data_file.groupby(['receiving_date'])['sum'].agg('sum')
+</code></pre>
+<h4 id="_7">Рисование графика</h4>
+<pre><code>plt.figure(figsize=(18,3), dpi=300)
+plt.xlabel('Период')
+plt.ylabel('Выручка')
+plt.title('Выручка компании за период Май 2021 - Ноябрь 2021')
+plt.plot(group_sum_data)
+plt.show();
+</code></pre>
+<h4 id="_8">Результат</h4>
+<p><img alt="График" src="/images/pic3.png" /></p>
+<h2 id="2021_1">Кто из менеджеров привлек для компании больше всего денежных средств в сентябре 2021?</h2>
+<h4 id="_9">Вычисление</h4>
+<pre><code>best_sellers = data_file.groupby(['sale'])['sum'].sum()
+best_sellers.sort_values(ascending=False)[:1]
+</code></pre>
+<h4 id="_10">Результат</h4>
+<p><img alt="Вывод лучшего менеджера" src="/images/pic4.png" /></p>
+<h4 id="_11">Вывод</h4>
+<p>Вывод: менеджер, привлекший больше всего денежных средств за указанный период: Петрова</p>
+<h2 id="2021_2">Какой тип сделок (новая/текущая) был преобладающим в октябре 2021?</h2>
+<h4 id="_12">Вычисление</h4>
+<pre><code>start_october = datetime(2021, 10, 1)
+end_october = datetime(2021, 10, 31)
+data_file_sum_in_october = data_file[data_file['receiving_date'] &gt;= start_october]
+data_file_sum_in_october = data_file_sum_in_october[data_file_sum_in_october['receiving_date'] &lt;= end_october]
+data_file_sum_in_october.groupby('new/current')['sum'].count()
+</code></pre>
+<h4 id="_13">Результат</h4>
+<p><img alt="Результат по сделкам" src="/images/pic5.png" /></p>
+<h4 id="_14">Вывод</h4>
+<p>Вывод: в октябре преобладающими были текущие сделки (105), а не новые (17)</p>
+<h2 id="2021_3">Сколько оригиналов договора по майским сделкам было получено в июне 2021?</h2>
+<h4 id="_15">Вычисление</h4>
+<pre><code>start_may = datetime(2021, 5, 1)
+end_may = datetime(2021, 5, 31)
+data_file_sum_in_may = data_file[data_file['receiving_date'] &gt;= start_may]
+data_file_sum_in_may = data_file_sum_in_may[data_file_sum_in_may['receiving_date'] &lt;= end_may]
+data_file_sum_in_may = data_file_sum_in_may[data_file_sum_in_may['document'] == 'оригинал']
+print("Количество оригиналов договоров по сделкам в мае:", len(data_file_sum_in_may))
+</code></pre>
+<h4 id="_16">Результат</h4>
+<p><img alt="Результат по оригиналам договоров" src="/images/pic6.png" /></p>
+<h1 id="_17">Задание</h1>
+<h4 id="_18">Подготовка датафрейма со всеми менеджерами</h4>
+<pre><code>sellers = data_file['sale'].unique()
+sellers_data = pd.DataFrame(sellers, columns = ['sale'])
+sellers_data = sellers_data.dropna()
+sellers_data.insert(1, 'bonus', 0)
+sellers_data
+</code></pre>
+<p><img alt="Датафрейм с менеджерами" src="/images/pic7.png" /></p>
+<h4 id="_19">Вычисление</h4>
+<pre><code>sellers_new = data_file[data_file['new/current'] == 'новая']
+sellers_new.insert(7, 'bonus', 0)
+sellers_cur = data_file[data_file['new/current'] == 'текущая']
+sellers_cur.insert(7, 'bonus', 0)
+first_of_july = datetime(2021, 7, 1)
+sellers_new = sellers_new[sellers_new['receiving_date'] &lt; first_of_july]
+sellers_cur = sellers_cur[sellers_cur['receiving_date'] &lt; first_of_july]
+for index, row in sellers_new.iterrows():
+    if(row['status'] == 'ОПЛАЧЕНО' and row['document'] == 'оригинал'):
+        sellers_new.at[index, 'bonus'] = float(row['sum'] * 0.07)
+for index, row in sellers_cur.iterrows():
+    if(row['status'] != 'ПРОСРОЧЕНО' and row['document'] == 'оригинал'):
+        if(row['sum'] &lt;= 10000.00):
+            sellers_cur.at[index, 'bonus'] = float(row['sum'] * 0.03)
+        else:
+            sellers_cur.at[index, 'bonus'] = float(row['sum'] * 0.05)
+sellers_new_bonuses = sellers_new.groupby('sale')['bonus'].sum()
+sellers_cur_bonuses = sellers_cur.groupby('sale')['bonus'].sum().astype(int)
+res = sellers_new_bonuses.append(sellers_cur_bonuses)
+res = res.append(sellers_new_bonuses)
+result = res.groupby('sale')['bonus'].sum().to_frame()
+</code></pre>
+<h4 id="_20">Результат</h4>
+<p><img alt="Результат" src="/images/pic8.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

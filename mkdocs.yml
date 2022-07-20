@@ -1,0 +1,10 @@
+site_name: Topface Media test task
+site_url: https://example.com/
+
+nav:
+    - Home: index.md
+    - Ответы на вопросы: questions.md
+    - Задачи на логику: logic.md
+    - Техническое задание: testtask.md
+
+
