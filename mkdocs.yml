@@ -1,5 +1,5 @@
 site_name: Topface Media test task
-site_url: https://example.com/
+site_url: ""
 
 nav:
     - Home: index.md
